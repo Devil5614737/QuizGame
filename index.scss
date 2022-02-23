@@ -40,6 +40,10 @@
         .question-container{
             margin-top: 42px;
             width: 60%;
+            &::selection{
+                background-color: red;
+                color: red;
+            }
             @media screen and (max-width:550px) {
                 width: unset;
                }
@@ -97,3 +101,4 @@ body.dark{
 .wrong{
     color: red;
 }
+

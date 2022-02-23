@@ -1,25 +1,34 @@
 const body=document.getElementById('body')
     const btn=document.getElementById('darkSwitch')
 
-let question_container=document.getElementById('question');
-let option_container=document.getElementById('options');
+const question_container=document.getElementById('question');
+const option_container=document.getElementById('options');
 let score=0;
-let score_container=document.getElementById('score');
+const score_container=document.getElementById('score');
+
+
+
 // creating dark-mode functionality😎😎
 function darkMode(){
-    
-
     btn.addEventListener('click',()=>{
-        body.classList.toggle('dark')
+        body.classList.toggle('dark');
+        if(body.classList.value==='dark'){
+
+            btn.textContent="on";
+        }else{
+            btn.textContent="off";
+        }
+           
+        
     })
 }
 
 darkMode();
 
-
+window.alert('On every right answer, you get  1 point, and if wrong, 1 point will be deducted.')
 async function fetchData(){
     try {
-        const res=await fetch("https://opentdb.com/api.php?amount=8&category=18&difficulty=easy&type=multiple");
+        const res=await fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple");
         const data=await res.json();
         displayData(data.results[0]);
 
@@ -36,7 +45,7 @@ function displayData(data){
 
 // displaying the question;
 
-   question_container.innerText=data&&data.question
+   question_container.innerText= !data?'...loading':data&&data.question
 
 
 // displaying the options;
@@ -69,6 +78,7 @@ data&&data.incorrect_answers.forEach(io=>{
             }else{
                 return alert('you lost')
             }
+
             question_container.innerText="";
             option_container.innerText="";
                 fetchData()

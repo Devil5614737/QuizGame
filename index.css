@@ -76,6 +76,16 @@ body {
   width: 60%;
 }
 
+.main .main-container .question-container::-moz-selection {
+  background-color: red;
+  color: red;
+}
+
+.main .main-container .question-container::selection {
+  background-color: red;
+  color: red;
+}
+
 @media screen and (max-width: 550px) {
   .main .main-container .question-container {
     width: unset;
