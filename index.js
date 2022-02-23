@@ -1,8 +1,13 @@
+const body=document.getElementById('body')
+    const btn=document.getElementById('darkSwitch')
+
+let question_container=document.getElementById('question');
+let option_container=document.getElementById('options');
 let score=0;
+let score_container=document.getElementById('score');
 // creating dark-mode functionality😎😎
 function darkMode(){
-    const body=document.getElementById('body')
-    const btn=document.getElementById('darkSwitch')
+    
 
     btn.addEventListener('click',()=>{
         body.classList.toggle('dark')
@@ -28,10 +33,7 @@ fetchData();
 
 
 function displayData(data){
-let question_container=document.getElementById('question');
-let option_container=document.getElementById('options');
 
-let score_container=document.getElementById('score');
 // displaying the question;
 
    question_container.innerText=data&&data.question
@@ -50,8 +52,8 @@ data&&data.incorrect_answers.forEach(io=>{
         if(listItem.textContent===data.correct_answer){
             listItem.classList.add('correct');
             listItem.classList.remove('wrong');
-            let a=score++;
-            score_container.textContent=a
+            score++;
+            score_container.textContent=score
           question_container.innerText="";
           option_container.innerText="";
               fetchData()
@@ -60,8 +62,8 @@ data&&data.incorrect_answers.forEach(io=>{
         else if(listItem.textContent!==data.correct_answer){
             listItem.classList.add('wrong');
             listItem.classList.remove('correct');
-            let a=score--;
-            score_container.textContent=a
+            score--;
+            score_container.textContent=score
             question_container.innerText="";
             option_container.innerText="";
                 fetchData()
