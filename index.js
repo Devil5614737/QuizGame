@@ -62,8 +62,13 @@ data&&data.incorrect_answers.forEach(io=>{
         else if(listItem.textContent!==data.correct_answer){
             listItem.classList.add('wrong');
             listItem.classList.remove('correct');
-            score--;
-            score_container.textContent=score
+            if(score>0){
+
+                score--;
+                score_container.textContent=score
+            }else{
+                return alert('you lost')
+            }
             question_container.innerText="";
             option_container.innerText="";
                 fetchData()
